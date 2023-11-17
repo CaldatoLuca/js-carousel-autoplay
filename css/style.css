@@ -41,15 +41,21 @@ img {
 .item.active {
   display: block;
 }
-.stop {
+.stop,
+.start {
   padding: 5px 10px;
   background: #ccc;
   position: absolute;
-  left: 50%;
   top: 25%;
   transform: translate(-50%);
   cursor: pointer;
   z-index: 999;
+}
+.start {
+  left: 45%;
+}
+.stop {
+  right: 45%;
 }
 
 .prev,

@@ -34,23 +34,57 @@ function prevImage() {
   imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
 }
 
+function prova() {
+  let x;
+  x = setInterval(nextImage, 1000);
+  return x;
+}
+
+function buttons() {
+  let y = prova();
+  let intervalNext;
+  let intervalPrev;
+
+  stop.addEventListener("click", function () {
+    clearInterval(intervalNext);
+    clearInterval(intervalPrev);
+    clearInterval(y);
+  });
+
+  start.addEventListener("click", function () {
+    intervalNext = setInterval(nextImage, 1000);
+    clearInterval(intervalPrev);
+  });
+  next.addEventListener(`click`, function () {
+    intervalNext = setInterval(nextImage, 1000);
+    clearInterval(intervalPrev);
+  });
+
+  prev.addEventListener(`click`, function () {
+    intervalPrev = setInterval(prevImage, 1000);
+    clearInterval(intervalNext);
+  });
+}
+
 /*
 ?------
 !CODICE
 ?------
 */
+
 //elementi html
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 const stop = document.querySelector(".stop");
+const start = document.querySelector(".start");
 
 // variabili
 const imagesList = ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"];
 const imagesContainer = document.querySelector(".items");
 const thumbnailContainer = document.querySelector(".all");
 let counter = 0;
-let intervalNext = "";
-let intervalPrev = "";
+
+buttons();
 
 //!ciclo per assegnaziojne immagini all' elemento HTML .items
 for (let i = 0; i < imagesList.length; i++) {
@@ -101,16 +135,6 @@ const images = document.querySelectorAll(".item");
 //inizializzo una variabile che raccoglie tutte le mie immagini di .all
 const imagesAll = document.querySelectorAll(".all img");
 
-next.addEventListener(`click`, function () {
-  intervalNext = setInterval(nextImage, 1000);
-  clearInterval(intervalPrev);
-});
-
-prev.addEventListener(`click`, function () {
-  intervalPrev = setInterval(prevImage, 1000);
-  clearInterval(intervalNext);
-});
-
 //! evento click sulle thumbnail
 for (let i = 0; i < imagesAll.length; i++) {
   imagesAll[i].addEventListener("click", function () {
@@ -127,12 +151,6 @@ for (let i = 0; i < imagesAll.length; i++) {
     counter = i;
   });
 }
-
-//!evento click su stop
-stop.addEventListener("click", function () {
-  clearInterval(intervalNext);
-  clearInterval(intervalPrev);
-});
 
 /*
 //! click su avanti
