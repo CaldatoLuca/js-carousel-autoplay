@@ -34,14 +34,14 @@ function prevImage() {
   imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
 }
 
-function prova() {
+function startEvent() {
   let x;
   x = setInterval(nextImage, 1000);
   return x;
 }
 
 function buttons() {
-  let y = prova();
+  let y = startEvent();
   let intervalNext;
   let intervalPrev;
 
