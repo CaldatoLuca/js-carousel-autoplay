@@ -2,6 +2,8 @@
 
 _HTML+css+js_
 
+![Thumbnail](/readme-img/img-1.jpeg/)
+
 Creazione di una funzione di autoplay da applicare a un esercizio già svolto, [corousel](https://github.com/CaldatoLuca/js-array-carousel).
 
 ## Soluzione
