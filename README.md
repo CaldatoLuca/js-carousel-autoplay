@@ -13,7 +13,7 @@ Creazione di una funzione di autoplay da applicare a un esercizio già svolto, [
 
 ## Svolgimento
 
-**### Dividere in funzioni gli eventi prossima immagine e immagine precedente**
+### Dividere in funzioni gli eventi prossima immagine e immagine precedente
 
 ```js
 function nextImage() {
@@ -47,8 +47,9 @@ function prevImage() {
 
 - inserisco in due funzioni separate le istruzioni per passare alla prossima o alla precedente immagin/thumbnail
 
-**### Far avvenire tali eventi al click del bottone start e delle frecce**
-**### Far in modo che l' evento si ripeta con `setInterval(, )`**
+### Far avvenire tali eventi al click del bottone start e delle frecce
+
+### Far in modo che l' evento si ripeta con `setInterval(, )`
 
 ```js
 let intervalNext;
@@ -73,7 +74,7 @@ prev.addEventListener(`click`, function () {
 
 - al click su start parte lo stasso evento della freccia next
 
-**### Cancellare l' evento se si va a premere sul pulsante di stop con `clearInterval();`**
+### Cancellare l' evento se si va a premere sul pulsante di stop con `clearInterval();`
 
 ```js
 stop.addEventListener("click", function () {
