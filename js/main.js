@@ -1,5 +1,44 @@
 "use.strict";
 
+/*
+?------
+!FUNZIONI
+?------
+*/
+
+function nextImage() {
+  images[counter].classList.remove("active"); //immagine principale
+  imagesAll[counter].classList.remove("thumbnail-active"); //immagine thumbnail
+
+  if (counter === Number(images.length) - 1) {
+    counter = 0;
+  } else {
+    counter++;
+  }
+
+  images[counter].classList.add("active"); //immagine principale
+  imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
+}
+
+function prevImage() {
+  images[counter].classList.remove("active"); //immagine principale
+  imagesAll[counter].classList.remove("thumbnail-active"); //immagine thumbnail
+
+  if (counter === 0) {
+    counter = images.length - 1;
+  } else {
+    counter--;
+  }
+
+  images[counter].classList.add("active"); //immagine principale
+  imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
+}
+
+/*
+?------
+!CODICE
+?------
+*/
 // variabili
 const imagesList = ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"];
 const imagesContainer = document.querySelector(".items");
@@ -7,6 +46,7 @@ const thumbnailContainer = document.querySelector(".all");
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 let counter = 0;
+let x = setInterval(prevImage, 3000);
 
 //!ciclo per assegnaziojne immagini all' elemento HTML .items
 for (let i = 0; i < imagesList.length; i++) {
