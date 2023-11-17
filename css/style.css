@@ -41,70 +41,51 @@ img {
 .item.active {
   display: block;
 }
-
-.prev,
-.next {
-  width: 20px;
-  height: 20px;
-  margin: 10px 0;
-  border-radius: 50%;
+.stop {
+  padding: 5px 10px;
   background: #ccc;
   position: absolute;
-  left: 107%;
+  left: 50%;
+  top: 25%;
   transform: translate(-50%);
   cursor: pointer;
   z-index: 999;
 }
 
+.prev,
 .next {
-  bottom: -50px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  z-index: 999;
+}
+
+.next {
+  left: 110%;
 }
 
 .prev {
-  top: -50px;
+  right: 110%;
 }
 
-.prev::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  transform: rotate(45deg);
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  display: block;
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%) rotate(-45deg);
-}
-
-.next::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  transform: rotate(45deg);
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  display: block;
-  position: absolute;
-  bottom: 35%;
-  left: 50%;
-  transform: translate(-50%) rotate(135deg);
+.no-click {
+  pointer-events: none;
 }
 
 /* bonus 2 */
 .all {
+  display: flex;
   position: absolute;
-  top: 0;
-  right: -100px;
-  bottom: 0;
-
+  left: 0;
+  right: 0;
+  top: 100%;
   z-index: 40;
   height: 100%;
 }
 .all div {
-  width: 100px;
-  height: calc(100% / 5);
+  width: calc(100% / 5);
+  height: 150px;
 }
 .all img {
   width: 100%;
@@ -113,6 +94,6 @@ img {
   opacity: 0.5;
 }
 .all .thumbnail-active {
-  border: white 1px solid;
+  border: salmon 1px solid;
   opacity: 1;
 }

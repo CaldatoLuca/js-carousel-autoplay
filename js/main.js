@@ -39,14 +39,18 @@ function prevImage() {
 !CODICE
 ?------
 */
+//elementi html
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+const stop = document.querySelector(".stop");
+
 // variabili
 const imagesList = ["01.jpg", "02.jpg", "03.jpg", "04.jpg", "05.jpg"];
 const imagesContainer = document.querySelector(".items");
 const thumbnailContainer = document.querySelector(".all");
-const prev = document.querySelector(".prev");
-const next = document.querySelector(".next");
 let counter = 0;
-let x = setInterval(prevImage, 3000);
+let intervalNext = "";
+let intervalPrev = "";
 
 //!ciclo per assegnaziojne immagini all' elemento HTML .items
 for (let i = 0; i < imagesList.length; i++) {
@@ -97,6 +101,40 @@ const images = document.querySelectorAll(".item");
 //inizializzo una variabile che raccoglie tutte le mie immagini di .all
 const imagesAll = document.querySelectorAll(".all img");
 
+next.addEventListener(`click`, function () {
+  intervalNext = setInterval(nextImage, 1000);
+  clearInterval(intervalPrev);
+});
+
+prev.addEventListener(`click`, function () {
+  intervalPrev = setInterval(prevImage, 1000);
+  clearInterval(intervalNext);
+});
+
+//! evento click sulle thumbnail
+for (let i = 0; i < imagesAll.length; i++) {
+  imagesAll[i].addEventListener("click", function () {
+    for (let j = 0; j < imagesAll.length; j++) {
+      clearInterval(intervalNext);
+      clearInterval(intervalPrev);
+      if (j !== i) {
+        images[j].classList.remove("active");
+        imagesAll[j].classList.remove("thumbnail-active");
+      }
+    }
+    images[i].classList.add("active");
+    imagesAll[i].classList.add("thumbnail-active");
+    counter = i;
+  });
+}
+
+//!evento click su stop
+stop.addEventListener("click", function () {
+  clearInterval(intervalNext);
+  clearInterval(intervalPrev);
+});
+
+/*
 //! click su avanti
 next.addEventListener(`click`, function () {
   images[counter].classList.remove("active"); //immagine principale
@@ -126,17 +164,4 @@ prev.addEventListener(`click`, function () {
   images[counter].classList.add("active"); //immagine principale
   imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
 });
-
-//! evento click sulle thumbnail
-for (let i = 0; i < imagesAll.length; i++) {
-  imagesAll[i].addEventListener("click", function () {
-    for (let j = 0; j < imagesAll.length; j++) {
-      if (j !== i) {
-        imagesAll[j].classList.remove("active");
-        imagesAll[j].classList.remove("thumbnail-active");
-      }
-    }
-    imagesAll[i].classList.add("active");
-    imagesAll[i].classList.add("thumbnail-active");
-  });
-}
+*/
