@@ -59,175 +59,44 @@ const imagesAll = document.querySelectorAll(".all img");
 
 //! click su avanti
 next.addEventListener(`click`, function () {
-  if (counter < images.length - 1) {
-    // rimuovo le classi active
-    images[counter].classList.remove("active"); //immagine principale
-    imagesAll[counter].classList.remove("thumbnail-active"); //immagine thumbnail
-    counter++;
-    // aggiungo le classi active al successivo
-    images[counter].classList.add("active"); //immagine principale
-    imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
-  } else if (counter === Number(images.length) - 1) {
-    //resetto il contatore immagini se è arrivato all' ultima (ciclo infinito di click)
-    images[counter].classList.remove("active");
-    imagesAll[counter].classList.remove("thumbnail-active");
+  images[counter].classList.remove("active"); //immagine principale
+  imagesAll[counter].classList.remove("thumbnail-active"); //immagine thumbnail
+
+  if (counter === Number(images.length) - 1) {
     counter = 0;
-    images[counter].classList.add("active");
-    imagesAll[counter].classList.add("thumbnail-active");
+  } else {
+    counter++;
   }
+
+  images[counter].classList.add("active"); //immagine principale
+  imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
 });
 
 //! click su precedente
 prev.addEventListener(`click`, function () {
-  if (counter > 0) {
-    // rimuovo le classi active
-    images[counter].classList.remove("active"); //immagine principale
-    imagesAll[counter].classList.remove("thumbnail-active"); //immagine thumbnail
-    counter--;
-    // aggiungo le classi active al successivo
-    images[counter].classList.add("active"); //immagine principale
-    imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
-  } else if (counter === 0) {
-    //riporto al massimo il contatore immagini se è arrivato alla prima(ciclo infinito di click)
-    images[counter].classList.remove("active");
-    imagesAll[counter].classList.remove("thumbnail-active");
+  images[counter].classList.remove("active"); //immagine principale
+  imagesAll[counter].classList.remove("thumbnail-active"); //immagine thumbnail
+
+  if (counter === 0) {
     counter = images.length - 1;
-    images[counter].classList.add("active");
-    imagesAll[counter].classList.add("thumbnail-active");
+  } else {
+    counter--;
   }
+
+  images[counter].classList.add("active"); //immagine principale
+  imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
 });
 
-//! click su singola thumnail
-imagesAll[0].addEventListener(`click`, function () {
-  images[0].classList.add("active");
-  imagesAll[0].classList.add("thumbnail-active");
-
-  images[1].classList.remove("active");
-  imagesAll[1].classList.remove("thumbnail-active");
-
-  images[2].classList.remove("active");
-  imagesAll[2].classList.remove("thumbnail-active");
-
-  images[3].classList.remove("active");
-  imagesAll[3].classList.remove("thumbnail-active");
-
-  images[4].classList.remove("active");
-  imagesAll[4].classList.remove("thumbnail-active");
-
-  counter = 0;
-});
-
-imagesAll[1].addEventListener(`click`, function () {
-  images[1].classList.add("active");
-  imagesAll[1].classList.add("thumbnail-active");
-
-  images[0].classList.remove("active");
-  imagesAll[0].classList.remove("thumbnail-active");
-
-  images[2].classList.remove("active");
-  imagesAll[2].classList.remove("thumbnail-active");
-
-  images[3].classList.remove("active");
-  imagesAll[3].classList.remove("thumbnail-active");
-
-  images[4].classList.remove("active");
-  imagesAll[4].classList.remove("thumbnail-active");
-
-  counter = 1;
-});
-
-imagesAll[2].addEventListener(`click`, function () {
-  images[2].classList.add("active");
-  imagesAll[2].classList.add("thumbnail-active");
-
-  images[1].classList.remove("active");
-  imagesAll[1].classList.remove("thumbnail-active");
-
-  images[0].classList.remove("active");
-  imagesAll[0].classList.remove("thumbnail-active");
-
-  images[3].classList.remove("active");
-  imagesAll[3].classList.remove("thumbnail-active");
-
-  images[4].classList.remove("active");
-  imagesAll[4].classList.remove("thumbnail-active");
-
-  counter = 2;
-});
-
-imagesAll[3].addEventListener(`click`, function () {
-  images[3].classList.add("active");
-  imagesAll[3].classList.add("thumbnail-active");
-
-  images[1].classList.remove("active");
-  imagesAll[1].classList.remove("thumbnail-active");
-
-  images[2].classList.remove("active");
-  imagesAll[2].classList.remove("thumbnail-active");
-
-  images[0].classList.remove("active");
-  imagesAll[0].classList.remove("thumbnail-active");
-
-  images[4].classList.remove("active");
-  imagesAll[4].classList.remove("thumbnail-active");
-
-  counter = 3;
-});
-
-imagesAll[4].addEventListener(`click`, function () {
-  images[4].classList.add("active");
-  imagesAll[4].classList.add("thumbnail-active");
-
-  images[1].classList.remove("active");
-  imagesAll[1].classList.remove("thumbnail-active");
-
-  images[2].classList.remove("active");
-  imagesAll[2].classList.remove("thumbnail-active");
-
-  images[3].classList.remove("active");
-  imagesAll[3].classList.remove("thumbnail-active");
-
-  images[0].classList.remove("active");
-  imagesAll[0].classList.remove("thumbnail-active");
-
-  counter = 4;
-});
-
-/* ?CORREZIONE
-
-! const path = 'img/';  salvo la path delle immagini, posso cambiarla da qui se serve
-
-! rimuovo / cambio solo il valore di counter in base alle condizioni / aggiungo (rimuovere e aggiungere non si ripete, lo faccio sempre)
-  next.addEventListener(`click`, function () {
-    images[counter].classList.remove("active"); //immagine principale
-    imagesAll[counter].classList.remove("thumbnail-active"); //immagine thumbnail
-
-      if (counter === Number(images.length) - 1) {
-         counter = 0;
-       } else {
-           counter++;
-        }
-
-    images[counter].classList.add("active"); //immagine principale
-    imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
-});
-
-  prev.addEventListener(`click`, function () {
-    images[counter].classList.remove("active"); //immagine principale
-    imagesAll[counter].classList.remove("thumbnail-active"); //immagine thumbnail
-
-      if (counter === 0) {
-         counter = images.length - 1;
-       } else {
-           counter--;
-        }
-
-    images[counter].classList.add("active"); //immagine principale
-    imagesAll[counter].classList.add("thumbnail-active"); //immagine thumbnail
-});
-
-
-
-
-
-*/
+//! evento click sulle thumbnail
+for (let i = 0; i < imagesAll.length; i++) {
+  imagesAll[i].addEventListener("click", function () {
+    for (let j = 0; j < imagesAll.length; j++) {
+      if (j !== i) {
+        imagesAll[j].classList.remove("active");
+        imagesAll[j].classList.remove("thumbnail-active");
+      }
+    }
+    imagesAll[i].classList.add("active");
+    imagesAll[i].classList.add("thumbnail-active");
+  });
+}
